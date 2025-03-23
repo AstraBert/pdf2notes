@@ -1,0 +1,35 @@
+name: pdf2notes
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: $pgql_db
+      POSTGRES_USER: $pgql_user
+      POSTGRES_PASSWORD: $pgql_psw
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+  pdf2notes:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 6500:6500
+    secrets:
+      - llamacloud_key
+      - groq_key
+
+secrets:
+  llamacloud_key:
+    environment: llamacloud_api_key
+  groq_key:
+    environment: groq_api_key
+
+volumes:
+  pgdata:

@@ -1,0 +1,5 @@
+scripts/__pycache__/
+.mypy_cache/
+.env
+scripts/.env 
+pdf2notes.code-workspace
