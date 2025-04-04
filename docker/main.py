@@ -59,12 +59,12 @@ with gr.Blocks(theme=gr.themes.Soft(), title="Pdf2Notes") as demo:
     chat_input = gr.MultimodalTextbox(
         interactive=True,
         file_count="single",
-        file_types=[".pdf",".PDF"],
+        file_types=[".pdf",".PDF", ".docx", ".doc", ".DOCX", ".DOC", ".xlsx", ".csv", ".XSLX", ".CSV", ".pptx", ".PPTX"],
         placeholder="Enter message or upload file...",
         show_label=False,
         sources=["upload"],
     )
-
+    
     chat_msg = chat_input.submit(
         add_message, [chatbot, chat_input], [chatbot, chat_input]
     )
